@@ -50,7 +50,15 @@ button{
 }
 
 a,button,svg,a:hover,button:hover,svg:hover{
-    transition: all .4s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+svg{
+    fill: #000000;
+}
+
+svg:hover{
+    fill: #9D382B;
 }
 
 input{
