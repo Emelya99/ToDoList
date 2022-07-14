@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import styles from "./task.module.scss";
 import Icons from "../../Icons";
 
@@ -35,7 +36,12 @@ const Task = ({ item = [], onClickDeleteTask, onClickDone, onClickSaveTask }) =>
     }, [inputValue]);
 
     return (
-        <div className={styles.task}>
+        <motion.div
+            className={styles.task}
+            initial={{x:-100}}
+            animate={{ x: 0 }}
+            exit={{ x: -100}}
+        >
             <button
                 onClick={() => onDoneTask(isDone, item.id)}
                 style={{
@@ -69,7 +75,7 @@ const Task = ({ item = [], onClickDeleteTask, onClickDone, onClickSaveTask }) =>
             <button onClick={() => onClickDeleteTask(item.id)}>
                 <Icons id="close" />
             </button>
-        </div>
+        </motion.div>
     )
 }
 
