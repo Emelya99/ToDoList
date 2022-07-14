@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./task.module.scss";
 import Icons from "../../Icons";
 
-const Task = ({ onDeleteTask = [], item, onClickDone, onSaveTask }) => {
+const Task = ({ item = [], onClickDeleteTask, onClickDone, onClickSaveTask }) => {
     const [isDone, setIsDone] = React.useState(item.check);
     const [isEdit, setIsEdit] = React.useState(false);
     const [inputValue, setInputValue] = React.useState(item.text);
@@ -18,8 +18,8 @@ const Task = ({ onDeleteTask = [], item, onClickDone, onSaveTask }) => {
         isDone && setIsDone(!isDone);
     }
 
-    const clickOnSaveTask = (text, check, id) => {
-        onSaveTask({text, check, id});
+    const onSaveTask = (text, check, id) => {
+        onClickSaveTask({text, check, id});
         setIsEdit(!isEdit);
     }
 
@@ -31,6 +31,9 @@ const Task = ({ onDeleteTask = [], item, onClickDone, onSaveTask }) => {
         <div className={styles.task}>
             <button
                 onClick={() => onDoneTask(isDone, item.id)}
+                style={{
+                    pointerEvents: isEdit ? 'none' : null
+                }}
             >
                 <Icons id={isDone ? "done" : "circle"} />
             </button>
@@ -44,7 +47,7 @@ const Task = ({ onDeleteTask = [], item, onClickDone, onSaveTask }) => {
                 disabled={isEdit ? "" : "disabled"}
             />
             {isEdit ?
-                <button onClick={() => clickOnSaveTask(inputValue,isDone,item.id)}>
+                <button onClick={() => onSaveTask(inputValue,isDone,item.id)}>
                     <Icons id="save" />
                 </button>
                 :
@@ -52,7 +55,7 @@ const Task = ({ onDeleteTask = [], item, onClickDone, onSaveTask }) => {
                     <Icons id="edit" />
                 </button>
             }
-            <button onClick={() => onDeleteTask(item.id)}>
+            <button onClick={() => onClickDeleteTask(item.id)}>
                 <Icons id="close" />
             </button>
         </div>

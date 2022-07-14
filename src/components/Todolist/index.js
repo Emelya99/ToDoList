@@ -16,8 +16,20 @@ const Todolist = () => {
             })
     }, []);
 
-    const onClickAddTask = () => {
-        console.log(123);
+    const onClickAddTask = (obj) => {
+        
+        axios.post(`https://625187db2dc339451d2ef136.mockapi.io/ToDoList`, {
+            text: obj.text,
+            check: obj.check
+        })
+        .then((res) => {
+            const newTask = {
+                id: res.data.id,
+                text: obj.text,
+                check: obj.check
+            }
+            setTask((prev) => [...prev, newTask]);
+        })
     }
 
     const onClickDone = (obj) => {
@@ -26,12 +38,12 @@ const Todolist = () => {
         });
     }
 
-    const onDeleteTask = (id) => {
+    const onClickDeleteTask = (id) => {
         axios.delete(`https://625187db2dc339451d2ef136.mockapi.io/ToDoList/${id}`);
         setTask((prev) => prev.filter(item => item.id !== id));
     }
 
-    const onSaveTask = (obj) =>{
+    const onClickSaveTask = (obj) =>{
         axios.put(`https://625187db2dc339451d2ef136.mockapi.io/ToDoList/${obj.id}`, {
             text: obj.text,
             check: obj.check
@@ -44,16 +56,15 @@ const Todolist = () => {
                 <div className={styles.content}>
                     <Title title="Tasks" />
                     <AddTasks
-                        onClickAddTask={onClickAddTask}
+                        onClickAddTask={obj => onClickAddTask(obj)}
                     />
-                    {task.map((item) => (
+                    {task.slice(0).reverse().map((item) => (
                         <Task
                             key={item.id}
                             item={item}
-                            task={task}
-                            onDeleteTask={onDeleteTask}
+                            onClickDeleteTask={onClickDeleteTask}
                             onClickDone={obj => onClickDone(obj)}
-                            onSaveTask={obj => onSaveTask(obj)}
+                            onClickSaveTask={obj => onClickSaveTask(obj)}
                         />
                     ))}
                     {task.length === 0 && <p className={styles.noTaskText}>No tasks added yet</p>}
