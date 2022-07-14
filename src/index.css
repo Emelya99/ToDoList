@@ -58,6 +58,11 @@ button {
     padding: 17px 30px;
 }
 
+button:disabled{
+    pointer-events: none;
+    background: #E3D9DF;
+}
+
 a,
 button,
 svg,
@@ -87,7 +92,7 @@ input {
 textarea{
     border: none;
     resize: none;
-    overflow: hidden;
+    /* overflow: hidden; */
     background: #FDFAFB;
 }
 

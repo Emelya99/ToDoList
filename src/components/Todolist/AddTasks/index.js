@@ -8,8 +8,8 @@ const AddTasks = ({ onClickAddTask }) => {
         setInputValue(event.target.value);
     }
 
-    const onAddTask = (text,check) => {
-        onClickAddTask({text,check});
+    const onAddTask = (text, check) => {
+        onClickAddTask({ text, check });
         setInputValue('');
     }
 
@@ -18,13 +18,15 @@ const AddTasks = ({ onClickAddTask }) => {
             <input
                 className={styles.input}
                 type="text"
-                placeholder="Enter a task" 
+                placeholder="Enter a task"
                 value={inputValue}
                 onChange={onChangeInputValue}
             />
             <button
                 className={styles.btn}
-                onClick={() => onAddTask(inputValue, false)}>
+                onClick={() => onAddTask(inputValue, false)}
+                disabled={inputValue ? "" : "disabled"}
+            >
                 Add task
             </button>
         </div>

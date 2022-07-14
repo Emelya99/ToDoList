@@ -6,6 +6,7 @@ const Task = ({ item = [], onClickDeleteTask, onClickDone, onClickSaveTask }) =>
     const [isDone, setIsDone] = React.useState(item.check);
     const [isEdit, setIsEdit] = React.useState(false);
     const [inputValue, setInputValue] = React.useState(item.text);
+    const textareaRef = React.useRef(null);
 
     const onDoneTask = (check, id) => {
         onClickDone({ check: !check, id });
@@ -19,13 +20,19 @@ const Task = ({ item = [], onClickDeleteTask, onClickDone, onClickSaveTask }) =>
     }
 
     const onSaveTask = (text, check, id) => {
-        onClickSaveTask({text, check, id});
+        onClickSaveTask({ text, check, id });
         setIsEdit(!isEdit);
     }
 
-    const onChangeInputValue = (event) => {
-        setInputValue(event.target.value);
+    const onChangeInputValue = (e) => {
+        setInputValue(e.target.value);
     }
+
+    React.useEffect(() => {
+        textareaRef.current.style.height = "38px";
+        const scrollHeight = textareaRef.current.scrollHeight;
+        textareaRef.current.style.height = scrollHeight + "px";
+    }, [inputValue]);
 
     return (
         <div className={styles.task}>
@@ -38,6 +45,7 @@ const Task = ({ item = [], onClickDeleteTask, onClickDone, onClickSaveTask }) =>
                 <Icons id={isDone ? "done" : "circle"} />
             </button>
             <textarea
+                ref={textareaRef}
                 className={styles.textarea}
                 style={{
                     textDecoration: isDone ? 'line-through' : null
@@ -47,7 +55,10 @@ const Task = ({ item = [], onClickDeleteTask, onClickDone, onClickSaveTask }) =>
                 disabled={isEdit ? "" : "disabled"}
             />
             {isEdit ?
-                <button onClick={() => onSaveTask(inputValue,isDone,item.id)}>
+                <button
+                    onClick={() => onSaveTask(inputValue, isDone, item.id)}
+                    disabled={inputValue ? "" : "disabled"}
+                >
                     <Icons id="save" />
                 </button>
                 :
