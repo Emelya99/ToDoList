@@ -8,7 +8,6 @@ import Task from "./Task";
 const Todolist = () => {
     const [task, setTask] = React.useState([]);
 
-
     React.useEffect(() => {
         axios.get('https://625187db2dc339451d2ef136.mockapi.io/ToDoList')
             .then(res => {
