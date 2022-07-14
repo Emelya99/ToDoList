@@ -16,28 +16,36 @@ const Todolist = () => {
             })
     }, []);
 
+    const onClickAddTask = () => {
+        console.log(123);
+    }
+
     const onClickDone = (obj) => {
-        // axios.put(`https://625187db2dc339451d2ef136.mockapi.io/ToDoList/${obj.id}`, {
-        //         "text": obj.text,
-        //         "check": !obj.check,
-        //         "id": obj.id
-        //     })
-        console.log(obj);
+        axios.put(`https://625187db2dc339451d2ef136.mockapi.io/ToDoList/${obj.id}`, {
+            check: obj.check
+        });
     }
 
     const onDeleteTask = (id) => {
-        // axios.delete(`https://625187db2dc339451d2ef136.mockapi.io/ToDoList/${id}`);
+        axios.delete(`https://625187db2dc339451d2ef136.mockapi.io/ToDoList/${id}`);
         setTask((prev) => prev.filter(item => item.id !== id));
     }
 
-    
+    const onSaveTask = (obj) =>{
+        axios.put(`https://625187db2dc339451d2ef136.mockapi.io/ToDoList/${obj.id}`, {
+            text: obj.text,
+            check: obj.check
+        });
+    }
 
     return (
         <section className={styles.todolist}>
             <div className={styles.wrapper}>
                 <div className={styles.content}>
                     <Title title="Tasks" />
-                    <AddTasks />
+                    <AddTasks
+                        onClickAddTask={onClickAddTask}
+                    />
                     {task.map((item) => (
                         <Task
                             key={item.id}
@@ -45,6 +53,7 @@ const Todolist = () => {
                             task={task}
                             onDeleteTask={onDeleteTask}
                             onClickDone={obj => onClickDone(obj)}
+                            onSaveTask={obj => onSaveTask(obj)}
                         />
                     ))}
                     {task.length === 0 && <p className={styles.noTaskText}>No tasks added yet</p>}
