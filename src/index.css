@@ -6,11 +6,12 @@
     box-sizing: border-box;
 }
 
-html, body{
+html,
+body {
     height: 100%;
 }
 
-body{
+body {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 14px;
@@ -18,50 +19,60 @@ body{
     color: #000000;
 }
 
-main{
+main {
     flex: 1 1 auto;
 }
 
-ol, ul {
-	list-style: none;
+ol,
+ul {
+    list-style: none;
 }
 
-h1,h2,h3,h4,h5,h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 500;
     line-height: 1.25em;
 }
 
-a{
+a {
     text-decoration: none;
     color: #9D382B;
 }
 
-a:hover{
+a:hover {
     color: #000000;
 }
 
-button{
+button {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 14px;
     line-height: 18px;
     cursor: pointer;
     border: none;
+    border-radius: 10px;
+    padding: 17px 30px;
 }
 
-a,button,svg,a:hover,button:hover,svg:hover{
+a,
+button,
+svg,
+a:hover,
+button:hover,
+svg:hover {
     transition: all .3s ease-in-out;
 }
 
-svg{
+svg {
     fill: #000000;
 }
 
-svg:hover{
-    fill: #9D382B;
-}
-
-input{
+textarea,
+input {
     border: 2px solid #E4E4E4;
     border-radius: 10px;
     padding: 10px 15px;
@@ -70,29 +81,47 @@ input{
     font-size: 14px;
     line-height: 18px;
     font-weight: 500;
+    width: 100%;
 }
 
-input::placeholder{
+textarea{
+    border: none;
+    resize: none;
+    overflow: hidden;
+    background: #FDFAFB;
+}
+
+textarea:disabled{
+    background: #FDFAFB;
+}
+
+input::placeholder {
     opacity: 1;
     color: rgba(0, 0, 0, 0.5);
 }
 
-input:focus{
+textarea:focus,
+input:focus {
     outline: none;
 }
 
-input:focus::placeholder{
+input:focus::placeholder {
     color: #000000;
 }
 
-.container{
+.container {
     max-width: 1330px;
     margin: 0 auto;
     padding: 0 30px;
 }
 
-#root{
+#root {
     min-height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.title {
+    font-size: 36px;
+    line-height: 54px;
 }

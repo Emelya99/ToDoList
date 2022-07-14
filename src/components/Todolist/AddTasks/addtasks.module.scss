@@ -1,0 +1,28 @@
+.wrapper {
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input {
+    padding: 17px 20px;
+    font-size: 18px;
+    line-height: 24px;
+    max-width: calc(100% - 147px);
+
+    &::placeholder {
+        font-size: 18px;
+        line-height: 24px;
+    }
+}
+
+.btn {
+    color: #FDFAFB;
+    background: #EBCCD4;
+    font-size: 18px;
+    line-height: 24px;
+
+    &:hover {
+        background: #9D382B;
+    }
+}

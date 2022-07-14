@@ -6,9 +6,7 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <div className={`${styles.wrapper} container`}>
-                <a href="/">
-                    <Icons id="logo" />
-                </a>
+                <Icons id="logo" />
             </div>
         </header>
     )

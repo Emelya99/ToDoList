@@ -1,0 +1,44 @@
+.task {
+    background: #EBCCD4;
+    border-radius: 10px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    &:not(:last-child){
+        margin-bottom: 30px;
+    }
+
+    & button {
+        padding: 0;
+        background: transparent;
+        margin-top: 10px;
+
+        &:last-child{
+            margin-left: 20px;
+        }
+    }
+
+    & svg {
+        fill: #FDFAFB;
+
+        &:hover {
+            fill: #9D382B;
+        }
+    }
+}
+
+.textarea{
+    height: 38px;
+    margin: 0 20px;
+}
+
+.done{
+    text-decoration: line-through;
+}
+
+.noTaskText {
+    font-size: 20px;
+    line-height: 30px;
+}

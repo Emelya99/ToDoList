@@ -5,9 +5,7 @@ const Footer = () => {
     return(
         <footer className={styles.footer}>
             <div className={`${styles.wrapper} container`}>
-                <a href="/">
-                    <Icons id="logo" />
-                </a>
+                <Icons id="logo" />
             </div>
         </footer>
     )
