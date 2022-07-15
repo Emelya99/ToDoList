@@ -15,37 +15,55 @@ const Todolist = () => {
             })
     }, []);
 
-    const onClickAddTask = (obj) => {
-        axios.post(`https://625187db2dc339451d2ef136.mockapi.io/ToDoList`, {
-            text: obj.text,
-            check: obj.check
-        })
-            .then((res) => {
-                const newTask = {
-                    id: res.data.id,
-                    text: obj.text,
-                    check: obj.check
-                }
-                setTask((prev) => [...prev, newTask]);
+    const onClickAddTask = async (obj) => {
+        try {
+            await axios.post(`https://625187db2dc339451d2ef136.mockapi.io/ToDoList`, {
+                text: obj.text,
+                check: obj.check
             })
+                .then((res) => {
+                    const newTask = {
+                        id: res.data.id,
+                        text: obj.text,
+                        check: obj.check
+                    }
+                    setTask((prev) => [...prev, newTask]);
+                })
+        } catch (error) {
+            alert(error);
+        }
     }
 
-    const onClickDone = (obj) => {
-        axios.put(`https://625187db2dc339451d2ef136.mockapi.io/ToDoList/${obj.id}`, {
-            check: obj.check
-        });
+    const onClickDone = async (obj) => {
+        try {
+            await axios.put(`https://625187db2dc339451d2ef136.mockapi.io/ToDoList/${obj.id}`, {
+                check: obj.check
+            });
+        } catch (error) {
+            alert(error);
+        }
+
     }
 
-    const onClickDeleteTask = (id) => {
-        axios.delete(`https://625187db2dc339451d2ef136.mockapi.io/ToDoList/${id}`);
-        setTask((prev) => prev.filter(item => item.id !== id));
+    const onClickSaveTask = async (obj) => {
+        try {
+            await axios.put(`https://625187db2dc339451d2ef136.mockapi.io/ToDoList/${obj.id}`, {
+                text: obj.text,
+                check: obj.check
+            });
+        } catch (error) {
+            alert(error);
+        }
     }
 
-    const onClickSaveTask = (obj) => {
-        axios.put(`https://625187db2dc339451d2ef136.mockapi.io/ToDoList/${obj.id}`, {
-            text: obj.text,
-            check: obj.check
-        });
+    const onClickDeleteTask = async (id) => {
+        try {
+            await axios.delete(`https://625187db2dc339451d2ef136.mockapi.io/ToDoList/${id}`);
+            setTask((prev) => prev.filter(item => item.id !== id));
+        } catch (error) {
+            alert(error);
+        }
+
     }
 
     return (

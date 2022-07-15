@@ -38,9 +38,9 @@ const Task = ({ item = [], onClickDeleteTask, onClickDone, onClickSaveTask }) =>
     return (
         <motion.div
             className={styles.task}
-            initial={{x:-100}}
+            initial={{ x: -100 }}
             animate={{ x: 0 }}
-            exit={{ x: -100}}
+            exit={{ x: -100 }}
         >
             <button
                 onClick={() => onDoneTask(isDone, item.id)}
