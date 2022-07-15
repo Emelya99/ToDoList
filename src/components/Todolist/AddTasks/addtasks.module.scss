@@ -26,3 +26,26 @@
         background: #9D382B;
     }
 }
+
+@media(max-width:560px){
+
+    .wrapper {
+        margin-bottom: 40px;
+    }
+}
+
+@media(max-width:475px){
+
+    .wrapper{
+        flex-wrap: wrap;
+    }
+
+    .input{
+        max-width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .btn{
+        width: 100%;
+    }
+}

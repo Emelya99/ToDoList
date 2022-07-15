@@ -42,3 +42,25 @@
     font-size: 20px;
     line-height: 30px;
 }
+
+@media(max-width:560px){
+
+    .task {
+        padding: 10px;
+        
+        &:not(:last-child){
+            margin-bottom: 20px;
+        }
+
+        & button{
+
+            &:last-child{
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .textarea{
+        margin: 0 10px;
+    }
+}

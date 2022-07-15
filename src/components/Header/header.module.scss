@@ -7,3 +7,24 @@
     display: flex;
     justify-content: space-between;
 }
+
+@media(max-width:1024px){
+
+    .header{
+        padding: 20px 0;
+    }
+
+    .wrapper{
+
+        & svg{
+            max-width: 120px;
+        }
+    }
+}
+
+@media(max-width:767px){
+
+    .wrapper{
+        justify-content: center;
+    }
+}
